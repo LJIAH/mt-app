@@ -1,28 +1,47 @@
 <template>
   <div id="app">
+    <!-- header -->
+    <app-header :poiInfo="poiInfo"></app-header>
 
+    <!-- nav -->
+    <app-nav></app-nav>
+    
+    <!-- content -->
+    <router-view></router-view>
 
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
+import Header from './components/header/Header'
+import Nav from './components/nav/Nav'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      poiInfo: {}
+    }
+  },
   components: {
-    // HelloWorld
+    'app-header': Header,
+    'app-nav': Nav
+  },
+  created() {
+    fetch('/api/goods')
+      .then(res => {
+        return res.json()
+      })
+      .then(Response => {
+        if(Response.code == 0){
+          this.poiInfo = Response.data.poi_info
+          console.log(this.poiInfo)
+        }
+      })
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
