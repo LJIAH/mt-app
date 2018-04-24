@@ -35,7 +35,7 @@ export default {
       .then(Response => {
         if(Response.code == 0){
           this.poiInfo = Response.data.poi_info
-          console.log(this.poiInfo)
+          // console.log(this.poiInfo)
         }
       })
   }

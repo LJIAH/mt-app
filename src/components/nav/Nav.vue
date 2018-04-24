@@ -36,7 +36,7 @@ export default {
   border-bottom: 1px solid #e4e4e4;
 }
 .nav-item{
-  flex: 1;
+  flex: auto;
   text-align: center;
   font-size: 13px;
   text-decoration: none;
